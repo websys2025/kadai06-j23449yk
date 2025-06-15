@@ -4,7 +4,7 @@ API_URL  = "http://api.e-stat.go.jp/rest/3.0/app/json/getStatsData"
 
 params = {
     "appId": APP_ID,
-    "statsDataId":"0000020201",
+    "statsDataId":"0003420473",
     "cdArea":"12101,12102,12103,12104,12105,12106",
     "cdCat01": "A1101",
     "metaGetFlg":"Y",
