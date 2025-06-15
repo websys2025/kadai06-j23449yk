@@ -1,5 +1,5 @@
 import requests
-
+　
 # アプリケーションID（ユーザー個別のAPIキー）
 APP_ID = "9728ab69704bfdfada4b5617b936c3b91bc0f3e2"
 
