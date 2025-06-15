@@ -1,27 +1,24 @@
+# オープンデータ名：気象庁 天気予報データ（オープンデータ）
+# 概要：気象庁が提供する地方ごとの天気予報（当日～数日分）をJSON形式で取得できる
+# エンドポイント：https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json
+# エリアコード：130000 → 東京都地方（東京、千葉、神奈川、埼玉）
+# 機能：指定地域の天気予報
+
+# 使い方：
+# - requestsでAPIにGETアクセス
+# - JSONとして読み込み
+# - 地域名と天気の情報を抽出・整形して表示
+
 import requests
-#出入国管理統計
-#出入国管理統計 / 出入（帰）国者数
-APP_ID = "41a8ec7dc0cbd4d5ab03a8b1c7eb0f3723b6449d"
-API_URL  = "http://api.e-stat.go.jp/rest/3.0/app/json/getStatsData"
+import json
 
-params = {
-    "appId": APP_ID,
-    "statsDataId":"0000020201",
-    "cdArea":"12101,12102,12103,12104,12105,12106",
-    "cdCat01": "A1101",
-    "metaGetFlg":"Y",
-    "cntGetFlg":"N",
-    "explanationGetFlg":"Y",
-    "annotationGetFlg":"Y",
-    "sectionHeaderFlg":"1",
-    "replaceSpChars":"0",
-    "lang": "J"  # 日本語を指定
-}
+url = "https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json"
+response = requests.get(url)
+weather_data = response.json()
 
-
-
-#response = requests.get(API_URL, params=params)
-response = requests.get(API_URL, params=params)
-# Process the response
-data = response.json()
-print(data)
+for area in weather_data[0]['timeSeries'][0]['areas']:
+    name = area['area']['name']
+    weather = area['weathers']
+    print(f"【{name}】")
+    for i, forecast in enumerate(weather):
+        print(f"  - 予報{i+1}: {forecast}")
