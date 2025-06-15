@@ -1,7 +1,5 @@
 import requests
-#出入国管理統計
-#出入国管理統計 / 出入（帰）国者数
-APP_ID = "41a8ec7dc0cbd4d5ab03a8b1c7eb0f3723b6449d"
+APP_ID = "9728ab69704bfdfada4b5617b936c3b91bc0f3e2"
 API_URL  = "http://api.e-stat.go.jp/rest/3.0/app/json/getStatsData"
 
 params = {
